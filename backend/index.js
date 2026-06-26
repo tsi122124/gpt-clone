@@ -22,11 +22,13 @@ async function startServer() {
     const connection = await db.getConnection();
     connection.release();
 
-    app.listen(3888, (err) => {
+    const PORT = process.env.PORT || 3888;
+
+    app.listen(PORT, (err) => {
       if (err) {
         throw err;
       }
-      console.log("Server is running on port http://localhost:3888");
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Error starting server:", error.message);
